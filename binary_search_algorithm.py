@@ -16,7 +16,7 @@ def binary_serach(lst,target,high = None,low = None): #[1,3,4,5,6,10]
     if high is None:
         high = len(lst) -1
     else:
-        -1
+        return -1
 
 
     midpoint = len(lst) // 2
@@ -31,6 +31,28 @@ def binary_serach(lst,target,high = None,low = None): #[1,3,4,5,6,10]
     
 
 if __name__ == '__main__':
-    lst = [1,2,3,34,44,55]    
-    print(naive_search(lst,44))
-    print(binary_serach(lst,44))
+    # lst = [1,2,3,34,44,55]    
+    # print(naive_search(lst,44))
+    # print(binary_serach(lst,44))
+    
+    length = 10000
+    number_lst = set()
+    while len(number_lst) < length:
+        number_lst.add(random.randint(-3*length,3*length))
+
+    number_lst = sorted(list(number_lst))
+
+    
+    start = time.time()
+    for target in number_lst:
+        naive_search(number_lst,target)
+    end = time.time()
+    print("The navie search time is", end - start, "seconds")
+
+    start = time.time()
+    for target in number_lst:
+        binary_serach(number_lst,target)
+    end = time.time()
+    print("The binary search time is", end - start, "seconds")
+
+
